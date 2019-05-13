@@ -1,9 +1,9 @@
 param(
     [Parameter(Mandatory=$true)]
     $Name,
-    #[Parameter(Mandatory=$true)]
-    #[validatescript({(get-azlocation).location -contains $_})]
-    $location="southcentralus",
+    [Parameter(Mandatory=$true)]
+    [validatescript({(get-azlocation).location -contains $_})]
+    $location,
     [Parameter(Mandatory=$true)]
     $ResourceGroupName,
     [validateset("Storage","StorageV2","BlobStorage","BlockBlobStorage")]
