@@ -22,7 +22,7 @@ Standard_RAGRS. Read access geo-redundant storage.
 Premium_LRS. Premium locally-redundant storage.
 #>
 begin {
-    if($createResourceGroup){New-AzResourceGroup -Name $resourceGroup -Location $location -ErrorAction Stop}    
+    if($createResourceGroup){New-AzResourceGroup -Name $ResourceGroupName -Location $location -ErrorAction Stop}    
 }
 process {
     try
