@@ -5,7 +5,7 @@ function get-AZWMSubnetSecurity
         [Parameter(Mandatory=$true,HelpMessage="Enter Subscrption Name.")]
         [string]$SubscriptionName
     )
-    Set-AzContext -Subscription $SubscriptionName
+    Set-AzContext -Subscription $SubscriptionName|out-null
     $VNs=Get-AzVirtualNetwork
     $subnets=$vns|Get-AzVirtualNetworkSubnetConfig
     $output=@()
@@ -13,7 +13,7 @@ function get-AZWMSubnetSecurity
     {
         $item=[PSCustomObject]@{
             Name = $subnet.name
-            AddressPrefix=$subnet.AddressPrefix
+            AddressPrefix="$($subnet.AddressPrefix)"
             ServiceEndpoints=$subnet.serviceendpoints.service -join ","
             NetworkSecurityGroup=$subnet.NetworkSecurityGroup.id -join ","
         }
@@ -21,7 +21,6 @@ function get-AZWMSubnetSecurity
     }
     $output
 }
-
 
 function Set-AZWMSubnetsEnableServiceEndpoints
 {
