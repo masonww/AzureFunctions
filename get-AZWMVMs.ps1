@@ -14,9 +14,11 @@ foreach($subscription in $subscriptions)
             Name = $vm.name
             OSType = $vm.StorageProfile.OsDisk.OsType
             PowerState = $vm.PowerState
+            NIC = $vm.networkprofile.networkinterfaces.id.split("/")[-1]
+            DataDiskCount = $vm.StorageProfile.DataDisks.Count
 
         }
         $output += $item
-    }    
+    }
 }
 $output|Out-GridView
